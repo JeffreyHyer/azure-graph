@@ -1,0 +1,29 @@
+{
+    "name": "jeffreyhyer/azure-graph",
+    "description": "Azure Active Directory Graph API",
+    "keywords": ["azure", "active directory", "microsoft graph"],
+    "license": "MIT",
+    "homepage": "https://github.com/jeffreyhyer/azure-graph",
+    "support": {
+        "issues": "https://github.com/jeffreyhyer/azure-graph/issues",
+        "source": "https://github.com/jeffreyhyer/azure-graph"
+    },
+    "authors": [
+        {
+            "name": "Jeffrey Hyer",
+            "email": "github-azure-graph@jeffreyhyer.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Azure\\": "src/"
+        }
+    }
+}
