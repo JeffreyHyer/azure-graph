@@ -145,9 +145,18 @@ class Azure
     protected function api($name)
     {
         switch ($name) {
+            case 'apps':
+            case 'applications':
+                $api = new Api\Applications($this);
+                break;
+
             case 'user':
             case 'users':
                 $api = new Api\Users($this);
+                break;
+
+            default:
+                return new \Exception("Invalid API ($name)");
         }
 
         return $api;
