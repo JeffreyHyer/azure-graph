@@ -16,9 +16,7 @@ class Users extends AbstractApi implements EntityInterface
      */
     public function all()
     {
-        $response = $this->get('users', ['$top' => 500]);   // Max $top is 999
-
-        return $this->_respond($response);
+        return $this->get('users', ['$top' => 500]);   // Max $top is 999
     }
 
     /**
@@ -30,9 +28,7 @@ class Users extends AbstractApi implements EntityInterface
      */
     public function one($userId)
     {
-        $response = $this->get("users/{$userId}");
-
-        return $this->_respond($response);
+        return $this->get("users/{$userId}");
     }
 
     /**
@@ -55,9 +51,7 @@ class Users extends AbstractApi implements EntityInterface
      */
     public function create($user)
     {
-        $response = $this->post("users", $user);
-
-        return $this->_respond($response);
+        return $this->post("users", $user);
     }
 
     /**
@@ -71,9 +65,7 @@ class Users extends AbstractApi implements EntityInterface
      */
     public function edit($userId, $user)
     {
-        $response = $this->patch("users/{$userId}", $user);
-
-        return $this->_respond($response);
+        return $this->patch("users/{$userId}", $user);
     }
 
     /**
@@ -85,6 +77,6 @@ class Users extends AbstractApi implements EntityInterface
      */
     public function remove($userId)
     {
-        return $this->_respond($this->delete("users/{$userId}"));
+        return $this->delete("users/{$userId}");
     }
 }

@@ -14,9 +14,7 @@ class Applications extends AbstractApi implements EntityInterface
      */
     public function all()
     {
-        $response = $this->get('applications');
-
-        return $this->_respond($response);
+        return $this->get('applications');
     }
 
     /**
@@ -28,9 +26,7 @@ class Applications extends AbstractApi implements EntityInterface
      */
     public function one($appId)
     {
-        $response = $this->get("applications/{$appId}");
-
-        return $this->_respond($response);
+        return $this->get("applications/{$appId}");
     }
 
     /**
@@ -53,9 +49,7 @@ class Applications extends AbstractApi implements EntityInterface
      */
     public function create($app)
     {
-        $response = $this->post("applications", $app);
-
-        return $this->_respond($response);
+        return $this->post("applications", $app);
     }
 
     /**
@@ -69,9 +63,7 @@ class Applications extends AbstractApi implements EntityInterface
      */
     public function edit($appId, $app)
     {
-        $response = $this->patch("applications/{$appId}", $app);
-
-        return $this->_respond($response);
+        return $this->patch("applications/{$appId}", $app);
     }
 
     /**
@@ -83,7 +75,7 @@ class Applications extends AbstractApi implements EntityInterface
      */
     public function remove($appId)
     {
-        return $this->_respond($this->delete("applications/{$appId}"));
+        return $this->delete("applications/{$appId}");
     }
 
     /**
@@ -95,7 +87,7 @@ class Applications extends AbstractApi implements EntityInterface
      */
     public function extensionProperties($appId)
     {
-        return $this->_respond($this->get("applications/{$appId}/extensionProperties"));
+        return $this->get("applications/{$appId}/extensionProperties");
     }
 
     /**
@@ -108,11 +100,11 @@ class Applications extends AbstractApi implements EntityInterface
      */
     public function createExtensionProperty($appId, $extension)
     {
-        return $this->_respond($this->post("applications/{$appId}/extensionProperties", $extension));
+        return $this->post("applications/{$appId}/extensionProperties", $extension);
     }
 
     public function deleteExtensionProperty($appId, $extensionId)
     {
-        return $this->_respond($this->delete("applications/{$appId}/extensionProperties/{$extensionId}"));
+        return $this->delete("applications/{$appId}/extensionProperties/{$extensionId}");
     }
 }

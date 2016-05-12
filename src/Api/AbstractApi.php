@@ -33,15 +33,25 @@ abstract class AbstractApi
      */
     public function get($path, $queryStr = [])
     {
-        return $this->azure->client->request(
-            'GET',
-            $this->azure->_buildUrl("", $path, $queryStr),
-            [
-                'headers' => [
-                    'Authorization' => $this->azure->_getAuthToken()
+        try {
+            $response = $this->azure->client->request(
+                'GET',
+                $this->azure->_buildUrl("", $path, $queryStr),
+                [
+                    'headers' => [
+                        'Authorization' => $this->azure->_getAuthToken()
+                    ]
                 ]
-            ]
-        );
+            );
+
+            return $this->_respond($response);
+        } catch (\GuzzleHttp\Exception\TransferException $e) {
+            if ($e->hasResponse()) {
+                return $this->_respond($e->getResponse());
+            } else {
+                throw $e;
+            }
+        }
     }
 
     /**
@@ -55,17 +65,27 @@ abstract class AbstractApi
      */
     public function post($path, $body, $queryStr = [])
     {
-        return $this->azure->client->request(
-            'POST',
-            $this->azure->_buildUrl("", $path, $queryStr),
-            [
-                'headers' => [
-                    'Authorization' => $this->azure->_getAuthToken(),
-                    'Content-Type'  => 'application/json'
-                ],
-                'body' => json_encode($body)
-            ]
-        );
+        try {
+            $response = $this->azure->client->request(
+                'POST',
+                $this->azure->_buildUrl("", $path, $queryStr),
+                [
+                    'headers' => [
+                        'Authorization' => $this->azure->_getAuthToken(),
+                        'Content-Type'  => 'application/json'
+                    ],
+                    'body' => json_encode($body)
+                ]
+            );
+
+            return $this->_respond($response);
+        } catch (\GuzzleHttp\Exception\TransferException $e) {
+            if ($e->hasResponse()) {
+                return $this->_respond($e->getResponse());
+            } else {
+                throw $e;
+            }
+        }
     }
 
     /**
@@ -79,17 +99,27 @@ abstract class AbstractApi
      */
     public function patch($path, $body, $queryStr = [])
     {
-        return $this->azure->client->request(
-            'PATCH',
-            $this->azure->_buildUrl("", $path, $queryStr),
-            [
-                'headers' => [
-                    'Authorization' => $this->azure->_getAuthToken(),
-                    'Content-Type'  => 'application/json'
-                ],
-                'body' => ((is_array($body)) ? json_encode($body) : $body)
-            ]
-        );
+        try {
+            $response = $this->azure->client->request(
+                'PATCH',
+                $this->azure->_buildUrl("", $path, $queryStr),
+                [
+                    'headers' => [
+                        'Authorization' => $this->azure->_getAuthToken(),
+                        'Content-Type'  => 'application/json'
+                    ],
+                    'body' => ((is_array($body)) ? json_encode($body) : $body)
+                ]
+            );
+
+            return $this->_respond($response);
+        } catch (\GuzzleHttp\Exception\TransferException $e) {
+            if ($e->hasResponse()) {
+                return $this->_respond($e->getResponse());
+            } else {
+                throw $e;
+            }
+        }
     }
 
     /**
@@ -102,15 +132,25 @@ abstract class AbstractApi
      */
     public function delete($path, $queryStr = [])
     {
-        return $this->azure->client->request(
-            'DELETE',
-            $this->azure->_buildUrl("", $path, $queryStr),
-            [
-                'headers' => [
-                    'Authorization' => $this->azure->_getAuthToken()
+        try {
+            $response = $this->azure->client->request(
+                'DELETE',
+                $this->azure->_buildUrl("", $path, $queryStr),
+                [
+                    'headers' => [
+                        'Authorization' => $this->azure->_getAuthToken()
+                    ]
                 ]
-            ]
-        );
+            );
+
+            return $this->_respond($response);
+        } catch (\GuzzleHttp\Exception\TransferException $e) {
+            if ($e->hasResponse()) {
+                return $this->_respond($e->getResponse());
+            } else {
+                throw $e;
+            }
+        }
     }
 
     /**

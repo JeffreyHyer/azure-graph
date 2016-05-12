@@ -174,10 +174,6 @@ class Azure
      */
     public function __call($method, $args)
     {
-        // try {
-            return $this->api($method);
-        // } catch (InvalidArgumentException $e) {
-        //     throw new BadMethodCallException(sprintf('Undefined method called: "%s"', $name));
-        // }
+        return $this->api($method);
     }
 }
